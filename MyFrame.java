@@ -1,5 +1,9 @@
 //こっちのほうが単純でわかりやすい。40行しかないし。
 //次回は、これでウィンドウを更新する方法を把握してくれ。
+
+//paintComponentで定義してから繰り返しrepaintしてるな。
+//道筋は見えたが、ウィンドウインスタンスと画面配列インスタンスの関係性がわかっていない。
+//このコードの解説を探してくれ。
 package Otamesi2;
 
 import javax.swing.*;
@@ -7,7 +11,7 @@ import java.awt.*;
 
 public class MyFrame extends JFrame {
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(() -> new MyFrame().setVisible(true));
+    SwingUtilities.invokeLater(() -> new MyFrame().setVisible(true));  //ここか？
   }
   
   MyFrame() {
@@ -29,13 +33,13 @@ class MyComponent extends JComponent {
       w += 10;
       if (w >= getWidth())
         w = 0;
-      repaint();
+      repaint();  //ここで更新してるな
     });
     timer.setRepeats(true);
     timer.start();
   }
   
-  @Override
+  @Override  //オーバーライドだと？
   public void paintComponent(Graphics g) {
     g.setColor(Color.BLUE);
     g.fillRect(0, 0, w, getHeight());
