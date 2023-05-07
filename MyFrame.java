@@ -42,7 +42,7 @@ class MyComponent extends JComponent {
     timer.start();
   }
   
-  @Override  //オーバーライドだと？
+  @Override  //何の為のオーバーライド？
   public void paintComponent(Graphics g) {
     g.setColor(Color.BLUE);
     // g.fillRect(0, 0, w, getHeight());
